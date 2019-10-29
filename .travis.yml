@@ -29,6 +29,7 @@ jobs:
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
+        file: xchart\target\xchart-*-ao.jar
         skip_cleanup: true
         on:
           tags: true
