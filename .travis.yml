@@ -24,12 +24,18 @@ branches:
 
 jobs:
   include:
+	- stage build
+		script: "mvn clean compile"
+	- stage test
+		script: "mvn test"
+	- stage install
+		script: "mvn install"
     - stage: GitHub Release
       script: echo "Deploying to GitHub releases ..."
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
-        file: xchart\target\xchart-*-ao.jar
+        file: $FILE_TO_DEPLOY
         skip_cleanup: true
         on:
           tags: true
