@@ -23,19 +23,19 @@ branches:
     - /xchart-\d+\.\d+\.\d+-ao/
 
 jobs:
-  include:
+    include:
     - stage: build
-        script: echo "Cleaning and compiling ..."
-        script: "mvn clean compile"
+      script: echo "Cleaning and compiling ..."
+      script: "mvn clean compile"
     - stage: test
-        script: echo "testing ..."
-        script: "mvn test"
+      script: echo "testing ..."
+      script: "mvn test"
     - stage: install
-        script: echo "installing ..."
-        script: "mvn install"
+      script: echo "installing ..."
+      script: "mvn install"
     - stage: GitHub Release
-        script: echo "Deploying to GitHub releases ..."
-        deploy:
+      script: echo "Deploying to GitHub releases ..."
+      deploy:
             provider: releases
             api_key: $GITHUB_OAUTH_TOKEN
             file: $FILE_TO_DEPLOY
