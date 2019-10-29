@@ -27,18 +27,20 @@ jobs:
     - stage: build
       script: echo "Cleaning and compiling ..."
       script: "mvn clean compile"
+      skip_cleanup: true
     - stage: test
       script: echo "testing ..."
       script: "mvn test"
+      skip_cleanup: true
     - stage: install
       script: echo "installing ..."
       script: "mvn install"
+      skip_cleanup: true
     - stage: GitHub Release
       script: echo "Deploying to GitHub releases ..."
       deploy:
             provider: releases
             api_key: $GITHUB_OAUTH_TOKEN
             file: $FILE_TO_DEPLOY
-            skip_cleanup: true
             on:
                 tags: true
