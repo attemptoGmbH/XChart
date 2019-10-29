@@ -24,13 +24,13 @@ branches:
 
 jobs:
   include:
-    - stage build
+    - stage: build
         script: echo "Cleaning and compiling ..."
         script: "mvn clean compile"
-    - stage test
+    - stage: test
         script: echo "testing ..."
         script: "mvn test"
-    - stage install
+    - stage: install
         script: echo "installing ..."
         script: "mvn install"
     - stage: GitHub Release
