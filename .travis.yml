@@ -11,10 +11,10 @@ else
     mvn clean verify --settings target/travis/settings.xml;
 fi"
 
-dist: trusty
+dist: bionic
 
 jdk:
-  - oraclejdk8
+  - openjdk11
 
 # whitelist
 branches:
