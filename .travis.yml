@@ -24,10 +24,11 @@ branches:
 
 jobs:
     include:
-    - stage: clean compile test and release
+    - stage: clean compile test and install
       skip_cleanup: true
       script: echo "clean and install ..."
       script: "mvn clean install"
+    - stage: clean compile test and release
       script: echo "Deploying to GitHub releases ..."
       deploy:
             provider: releases
