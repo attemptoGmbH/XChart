@@ -2,7 +2,6 @@ language: java
 dist: xenial
 sudo: false
 install: false
-script: "mvn clean package"
 
 
 jdk:
@@ -16,12 +15,10 @@ branches:
 
 jobs:
     include:
-    - stage: clean compile test and install
+    - stage: clean package
       skip_cleanup: true
       script: echo "clean and install ..."
-      script: "mvn clean install"
-    - stage: clean compile test and release
-      script: echo "Deploying to GitHub releases ..."
+      script: "mvn clean package"
       deploy:
             provider: releases
             api_key: $GITHUB_OAUTH_TOKEN
