@@ -1,17 +1,9 @@
 language: java
+dist: xenial
 sudo: false
-
-before_install: "git clone -b travis `git config --get remote.origin.url` target/travis"
 install: false
-script: "
-if [ ${TRAVIS_PULL_REQUEST} = 'false' ];
-then 
-    mvn clean test --settings target/travis/settings.xml;
-else 
-    mvn clean verify --settings target/travis/settings.xml;
-fi"
+script: "mvn clean package"
 
-dist: bionic
 
 jdk:
   - openjdk11
